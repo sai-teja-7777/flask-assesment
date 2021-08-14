@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    text-align: center;
+    background-color : #FFFFE0;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+  }

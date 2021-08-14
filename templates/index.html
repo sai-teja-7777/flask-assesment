@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>First Flask</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center;">Company List</h1>
+    {% if tasks|length < 1 %}
+        <h4 style="text-align: center;">"There are no Companys". Create one below!</h4>
+    {% else %}
+    <form action='/search' method="POST">
+        Search By Phone Number : <input type="number" name="phone_number" id="phone_number">
+        <input type="submit" value="Search">
+    </form>
+    <br>
+    <br>
+    <table class = "center" border="1">
+        <tr>
+            <th>Company name</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th>Address</th>
+            <th>CEO Name</th>
+            <th>Date Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.company_name }}</td>
+                <td>{{ task.email}}</td>
+                <td>{{ task.phone_number }}</td>
+                <td>{{ task.address}}</td>
+                <td>{{ task.ceo_name }}</td>
+                <td>{{ task.date_created.date()}}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{task.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <br>
+    <br>
+    <form action="/" method="POST">
+        Company Name : <input type="text" name="company_name" id="company_name">
+        <br><br>
+        Company Email : <input type="email" name="email" id="email">
+        <br><br>
+        Company Phone Number : <input type="number" name="phone_number" id="phone_number">
+        <br><br>
+        Company Address : <input type="text" name="address" id="address">
+        <br><br>
+        Company CEO Name : <input type="text" name="ceo_name" id="ceo_name">
+        <br><br>
+        <input type="submit" value="Add Company">
+    </form>
+{% endblock %}

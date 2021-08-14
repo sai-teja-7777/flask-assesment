@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>First Flask</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center;">Update Company</h1>
+    <br>
+    <form action="/update/{{task.id}}" method="POST">
+        Company Name : <input type="text" name="company_name" id="company_name" value ="{{task.company_name}}">
+        <br><br>
+        Company Email : <input type="email" name="email" id="email" value ="{{task.email}}">
+        <br><br>
+        Company Phone Number : <input type="number" name="phone_number" id="phone_number" value ="{{task.phone_number}}">
+        <br><br>
+        Company Address : <input type="text" name="address" id="address" value ="{{task.address}}">
+        <br><br>
+        Company CEO Name : <input type="text" name="ceo_name" id="ceo_name" value ="{{task.ceo_name}}">
+        <br><br>
+        <input type="submit" value="Update">
+    </form>
+{% endblock %}
